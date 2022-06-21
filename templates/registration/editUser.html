@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <div class="container-sm" style="padding:7%; text-align:center">
+            <div class='container-sm' style="border:solid grey; background-color:#84a98c; border-radius:75px; padding:20% 20% 20% 20%">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form | crispy}}
+                    <input class="btn btn-success" type="submit" value="submit" style="margin:10px">
+                </form>
+                <a class="btn btn-success" href={% url 'profile' %} role="button" style="margin:10px">Cancel</a>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="container-sm" style="padding:20%; text-align:center">
+            <div class='container-sm' style="border:solid grey; background-color:#84a98c; border-radius:75px; padding:50% 20% 20% 20%">
+                <form method='POST'>
+                    {% csrf_token %}
+                    {{form | crispy }}
+                    <input class="btn btn-success" type="button" value="Register">
+                </form>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}                
+                {% endif %}
+
+            </div>
+        </div>
+
+    {% endif %}
+
+
+{% endblock content %}
