@@ -10,6 +10,7 @@
             <div class='container-sm' style="border:solid grey; background-color:#84a98c; border-radius:75px; padding:20% 20% 20% 20%">
                 <form method="POST">
                     {% csrf_token %}
+                    <h1>{{user.username}}</h1>
                     {{form | crispy}}
                     <input class="btn btn-success" type="submit" value="submit" style="margin:10px">
                 </form>
