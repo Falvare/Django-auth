@@ -1,5 +1,33 @@
-<form method='POST'>
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type='submit' value='register'>
-</form>
+{% extends 'index.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+
+        <h1>You are already a register user. Please log out to register a new user.</h1>
+
+    {% else %}
+
+        <div class="container-sm" style="padding:20%; text-align:center">
+            <div class='container-sm' style="border:solid grey; background-color:#84a98c; border-radius:75px; padding:50% 20% 20% 20%">
+                <form method='POST'>
+                    {% csrf_token %}
+                    {{form | crispy }}
+                    <input class="btn btn-success" type="button" value="Register">
+                </form>
+                
+                {% if messages %}
+                    {% for message in messages %}
+                        {{message}}
+                    {% endfor %}                
+                {% endif %}
+
+            </div>
+        </div>
+
+    {% endif %}
+
+
+{% endblock content %}

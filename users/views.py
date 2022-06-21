@@ -1,5 +1,6 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 from .forms import RegistrationForm
 
@@ -11,6 +12,7 @@ def register(requests):
             form.save()
             reverse_lazy('login')
         else:
+            messages.error(requests, 'Please correct form and try again')
             form = RegistrationForm()
     
     form = RegistrationForm()
@@ -19,5 +21,5 @@ def register(requests):
 
     return render(requests, 'registration/register.html', context)
 
-def success(requests):
-    return render(requests, 'registration/success.html')
+def profile(requests):
+    return render(requests, 'registration/profile.html')
