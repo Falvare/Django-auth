@@ -9,4 +9,4 @@ class RegistrationForm(UserCreationForm):
 class UserEditForm(UserChangeForm):
     class Meta:
         model = User
-        exclude = ['is_staff', 'is_superuser', 'last_login', 'groups', 'user_permissions', 'is_active', 'date_joined', 'password']
+        exclude = ['username', 'is_staff', 'is_superuser', 'last_login', 'groups', 'user_permissions', 'is_active', 'date_joined', 'password']
