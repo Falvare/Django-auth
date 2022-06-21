@@ -21,5 +21,5 @@ def register(requests):
 
     return render(requests, 'registration/register.html', context)
 
-def success(requests):
-    return render(requests, 'registration/success.html')
+def profile(requests):
+    return render(requests, 'registration/profile.html')
