@@ -11,7 +11,7 @@ def register(requests):
         form = RegistrationForm(requests.POST)
         if form.is_valid():
             form.save()
-            reverse_lazy('login')
+            return redirect('login')
         else:
             messages.error(requests, 'Please correct form and try again')
             form = RegistrationForm()
